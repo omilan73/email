@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Correos Personalizados - Linkfortis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 antialiased min-h-screen">
+
+    <!-- Barra Superior -->
+    <header class="bg-gray-900 text-white py-4 px-6 shadow-md flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+            <img src="https://linkfortis.com/img/logo_linkfortis.jpeg" alt="Linkfortis" class="h-8 bg-white p-1 rounded">
+            <h1 class="text-lg font-bold">Panel Interno: Envío de Información a Clientes</h1>
+        </div>
+        <span class="text-xs bg-blue-600 text-white px-3 py-1 rounded-full font-medium">Óscar Milán (oscar@linkfortis.com)</span>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-8 grid lg:grid-cols-12 gap-8">
+        
+        <!-- COLUMNA IZQUIERDA: Formulario de Datos -->
+        <section class="lg:col-span-5 bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
+            <h2 class="text-xl font-bold mb-4 text-gray-900 border-b pb-2">1. Datos y Precios del Envío</h2>
+            
+            <form id="emailForm" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-500 mb-1">Nombre de la persona</label>
+                    <input type="text" id="clientName" placeholder="Ej. Carlos Martínez" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 outline-none text-sm">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-500 mb-1">Nombre del negocio</label>
+                    <input type="text" id="businessName" placeholder="Ej. Restaurante El Faro" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 outline-none text-sm">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-500 mb-1">Correo del cliente</label>
+                    <input type="email" id="clientEmail" placeholder="carlos@elfaro.com" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 outline-none text-sm">
+                </div>
+
+                <!-- Selección de Productos y Precios -->
+                <div class="pt-2 border-t border-gray-100">
+                    <label class="block text-xs font-bold uppercase text-gray-500 mb-3">Productos y Precios</label>
+                    
+                    <div class="space-y-3">
+                        <!-- Producto 1 -->
+                        <div class="flex items-center justify-between gap-2">
+                            <label class="flex items-center space-x-2 cursor-pointer text-sm">
+                                <input type="checkbox" id="prodStickers" checked class="rounded text-blue-600">
+                                <span>Pegatinas Inteligentes NFC</span>
+                            </label>
+                            <div class="flex items-center">
+                                <input type="number" id="priceStickers" value="15" class="w-16 px-2 py-1 text-right text-sm border rounded">
+                                <span class="ml-1 text-xs text-gray-500">€</span>
+                            </div>
+                        </div>
+
+                        <!-- Producto 2 -->
+                        <div class="flex items-center justify-between gap-2">
+                            <label class="flex items-center space-x-2 cursor-pointer text-sm">
+                                <input type="checkbox" id="prodAcrylic" checked class="rounded text-blue-600">
+                                <span>Expositores Acrílico Premium</span>
+                            </label>
+                            <div class="flex items-center">
+                                <input type="number" id="priceAcrylic" value="19" class="w-16 px-2 py-1 text-right text-sm border rounded">
+                                <span class="ml-1 text-xs text-gray-500">€</span>
+                            </div>
+                        </div>
+
+                        <!-- Producto 3 -->
+                        <div class="flex items-center justify-between gap-2">
+                            <label class="flex items-center space-x-2 cursor-pointer text-sm">
+                                <input type="checkbox" id="prodCustom" checked class="rounded text-blue-600">
+                                <span>Expositores Personalizados</span>
+                            </label>
+                            <div class="flex items-center">
+                                <input type="number" id="priceCustom" value="25" class="w-16 px-2 py-1 text-right text-sm border rounded">
+                                <span class="ml-1 text-xs text-gray-500">€</span>
+                            </div>
+                        </div>
+
+                        <!-- Servicio ReviewShield -->
+                        <div class="mt-4 pt-3 border-t border-gray-100">
+                            <div class="flex items-center justify-between gap-2">
+                                <label class="flex items-center space-x-2 cursor-pointer text-sm font-semibold text-purple-700">
+                                    <input type="checkbox" id="servReviewShield" checked class="rounded text-purple-600">
+                                    <span>ReviewShield (Escudo de Satisfacción)</span>
+                                </label>
+                            </div>
+                            <div class="mt-2 flex items-center justify-between pl-6">
+                                <span class="text-xs text-gray-500">Tiempo de prueba:</span>
+                                <input type="text" id="trialReviewShield" value="3 meses" class="w-28 px-2 py-1 text-center text-xs border rounded bg-purple-50">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-500 mb-1">Nota o mensaje personal (Opcional)</label>
+                    <textarea id="customNote" rows="2" placeholder="Ej. Un placer hablar contigo esta mañana por teléfono..."
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 outline-none text-sm"></textarea>
+                </div>
+
+                <div class="pt-4 space-y-2">
+                    <button type="button" onclick="copyHTML()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-4 rounded-lg transition shadow flex items-center justify-center space-x-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        <span>Copiar Código HTML del Correo</span>
+                    </button>
+                    
+                    <button type="button" onclick="sendMailto()" class="w-full bg-gray-800 hover:bg-gray-900 text-white font-bold py-2.5 px-4 rounded-lg transition shadow flex items-center justify-center space-x-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        <span>Abrir en aplicación de correo</span>
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- COLUMNA DERECHA: Vista Previa en Vivo -->
+        <section class="lg:col-span-7">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold text-gray-900">2. Vista Previa del Correo</h2>
+                <span id="copyAlert" class="hidden text-xs bg-green-100 text-green-800 font-bold px-3 py-1 rounded-full">¡HTML copiado al portapapeles!</span>
+            </div>
+
+            <!-- Contenedor del Correo Generado -->
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-200 overflow-x-auto">
+                <div id="emailPreview" class="max-w-xl mx-auto border border-gray-100 rounded-lg p-6 bg-white">
+                    <!-- Contenido dinámico -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function updatePreview() {
+            const clientName = document.getElementById('clientName').value || '[Nombre del Cliente]';
+            const businessName = document.getElementById('businessName').value || '[Nombre del Negocio]';
+            const customNote = document.getElementById('customNote').value;
+            
+            const prodStickers = document.getElementById('prodStickers').checked;
+            const priceStickers = document.getElementById('priceStickers').value;
+
+            const prodAcrylic = document.getElementById('prodAcrylic').checked;
+            const priceAcrylic = document.getElementById('priceAcrylic').value;
+
+            const prodCustom = document.getElementById('prodCustom').checked;
+            const priceCustom = document.getElementById('priceCustom').value;
+
+            const servReviewShield = document.getElementById('servReviewShield').checked;
+            const trialReviewShield = document.getElementById('trialReviewShield').value || '3 meses';
+
+            let productsHTML = '';
+
+            if (prodStickers) {
+                productsHTML += `
+                <div style="margin-bottom: 20px; border-bottom: 1px solid #f0f0f0; padding-bottom: 15px;">
+                    <img src="https://linkfortis.com/img/stickers.jpg" alt="Pegatinas NFC Linkfortis" style="width: 100%; max-height: 220px; object-fit: cover; border-radius: 8px; margin-bottom: 12px;">
+                    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px;">
+                        <h4 style="margin: 0; color: #111827; font-size: 16px;">Pegatinas Inteligentes NFC</h4>
+                        <span style="font-weight: bold; color: #2563eb; font-size: 16px;">${priceStickers}€</span>
+                    </div>
+                    <p style="margin: 0; color: #4b5563; font-size: 14px; line-height: 1.4;">Ideales para colocar en mesas, barras o escaparates de ${businessName}. Tus clientes solo acercan su teléfono y acceden directo a tus reseñas de Google.</p>
+                </div>`;
+            }
+
+            if (prodAcrylic) {
+                productsHTML += `
+                <div style="margin-bottom: 20px; border-bottom: 1px solid #f0f0f0; padding-bottom: 15px;">
+                    <img src="https://linkfortis.com/img/tj_review_far.jpeg" alt="Pegatinas con expositores de Acrílico Premium" style="width: 100%; max-height: 220px; object-fit: cover; border-radius: 8px; margin-bottom: 12px;">
+                    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px;">
+                        <h4 style="margin: 0; color: #111827; font-size: 16px;">Pegatinas con expositores de Acrílico Premium</h4>
+                        <span style="font-weight: bold; color: #2563eb; font-size: 16px;">${priceAcrylic}€</span>
+                    </div>
+                    <p style="margin: 0; color: #4b5563; font-size: 14px; line-height: 1.4;">Diseño elegante y minimalista para mostradores y cajas. Invita al cliente a interactuar en el momento perfecto de la compra.</p>
+                </div>`;
+            }
+
+            if (prodCustom) {
+                productsHTML += `
+                <div style="margin-bottom: 20px; border-bottom: 1px solid #f0f0f0; padding-bottom: 15px;">
+                    <img src="https://linkfortis.com/img/personalizados.jpg" alt="Pegatinas y expositores personalizados" style="width: 100%; max-height: 220px; object-fit: cover; border-radius: 8px; margin-bottom: 12px;">
+                    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px;">
+                        <h4 style="margin: 0; color: #111827; font-size: 16px;">Pegatinas y expositores personalizados</h4>
+                        <span style="font-weight: bold; color: #2563eb; font-size: 16px;">${priceCustom}€</span>
+                    </div>
+                    <p style="margin: 0; color: #4b5563; font-size: 14px; line-height: 1.4;">Adaptamos la estética de nuestros soportes NFC con los colores y el logotipo de ${businessName}, integrándonos perfectamente con tu imagen de marca.</p>
+                </div>`;
+            }
+
+            if (servReviewShield) {
+                productsHTML += `
+                <div style="margin-bottom: 20px; background-color: #faf5ff; padding: 15px; border-radius: 8px; border-left: 4px solid #9333ea;">
+                    <img src="https://linkfortis.com/img/logo_reviewshield.jpeg" alt="ReviewShield Linkfortis" style="width: 100%; max-height: 220px; object-fit: cover; border-radius: 8px; margin-bottom: 12px;">
+                    <h4 style="margin: 0 0 5px 0; color: #6b21a8; font-size: 16px;">Servicio ReviewShield (Escudo de Satisfacción)</h4>
+                    <p style="margin: 0 0 8px 0; color: #4b5563; font-size: 14px; line-height: 1.4;">Protege la reputación online de ${businessName}. Este sistema actúa como un escudo previo: capta internamente las opiniones negativas para que puedas gestionarlas en privado, mientras dirige directamente a Google las reseñas positivas.</p>
+                    <p style="margin: 0; font-size: 13px; font-weight: bold; color: #7e22ce;">Prueba gratuita incluida: ${trialReviewShield}</p>
+                </div>`;
+            }
+
+            const htmlContent = `
+            <div style="font-family: Arial, sans-serif; color: #333333; max-width: 600px; margin: 0 auto; background-color: #ffffff;">
+                
+                <!-- Encabezado con Logo -->
+                <div style="text-align: center; padding: 20px 0; border-bottom: 2px solid #2563eb;">
+                    <img src="https://linkfortis.com/img/logo_linkfortis.jpeg" alt="Linkfortis Logo" style="height: 55px; max-width: 100%; object-fit: contain;">
+                </div>
+
+                <!-- Cuerpo -->
+                <div style="padding: 30px 10px;">
+                    <h2 style="color: #111827; font-size: 20px; margin-top: 0;">¡Hola, ${clientName}!</h2>
+                    
+                    <p style="font-size: 15px; color: #374151; line-height: 1.6;">
+                        Te escribo para compartirte cómo desde <strong>Linkfortis</strong> podemos ayudar a potenciar las opiniones y la presencia digital de <strong>${businessName}</strong> de forma rápida y sencilla.
+                    </p>
+
+                    ${customNote ? `<div style="background-color: #f3f4f6; border-left: 4px solid #2563eb; padding: 12px 15px; margin: 20px 0; font-style: italic; font-size: 14px; color: #4b5563;">${customNote}</div>` : ''}
+
+                    <p style="font-size: 15px; color: #374151; line-height: 1.6;">
+                        Aquí tienes el detalle de las opciones y soluciones diseñadas para tu negocio:
+                    </p>
+
+                    <!-- Productos -->
+                    <div style="margin-top: 25px;">
+                        ${productsHTML}
+                    </div>
+
+                    <!-- Botón de Acción -->
+                    <div style="text-align: center; margin: 35px 0;">
+                        <a href="https://linkfortis.com" target="_blank" style="background-color: #2563eb; color: #ffffff; padding: 14px 28px; text-decoration: none; font-weight: bold; border-radius: 6px; display: inline-block; font-size: 15px;">
+                            Descubrir todas las soluciones en linkfortis.com
+                        </a>
+                    </div>
+
+                    <p style="font-size: 14px; color: #6b7280; line-height: 1.5;">
+                        Quedo a tu entera disposición para resolver cualquier duda o preparar una propuesta a medida para <strong>${businessName}</strong>.
+                    </p>
+                </div>
+
+                <!-- Firma Óscar Milán -->
+                <div style="border-top: 1px solid #e5e7eb; padding-top: 20px; margin-top: 20px;">
+                    <p style="margin: 0; font-weight: bold; color: #111827; font-size: 15px;">Óscar Milán</p>
+                    <p style="margin: 2px 0 0 0; color: #2563eb; font-size: 13px; font-weight: 600;">Linkfortis</p>
+                    <p style="margin: 5px 0 0 0; font-size: 13px; color: #6b7280;">
+                        Email: <a href="mailto:oscar@linkfortis.com" style="color: #2563eb; text-decoration: none;">oscar@linkfortis.com</a><br>
+                        Web: <a href="https://linkfortis.com" style="color: #2563eb; text-decoration: none;">linkfortis.com</a>
+                    </p>
+                </div>
+
+            </div>`;
+
+            document.getElementById('emailPreview').innerHTML = htmlContent;
+        }
+
+        function copyHTML() {
+            const previewHTML = document.getElementById('emailPreview').innerHTML;
+            navigator.clipboard.writeText(previewHTML).then(() => {
+                const alert = document.getElementById('copyAlert');
+                alert.classList.remove('hidden');
+                setTimeout(() => alert.classList.add('hidden'), 3000);
+            });
+        }
+
+        function sendMailto() {
+            const email = document.getElementById('clientEmail').value;
+            const businessName = document.getElementById('businessName').value;
+            const subject = encodeURIComponent(`Propuesta Linkfortis para ${businessName || 'tu negocio'}`);
+            
+            window.location.href = `mailto:${email}?subject=${subject}`;
+        }
+
+        // Event listeners para actualización en tiempo real
+        document.querySelectorAll('#emailForm input, #emailForm textarea').forEach(element => {
+            element.addEventListener('input', updatePreview);
+            element.addEventListener('change', updatePreview);
+        });
+
+        // Carga inicial de la vista previa
+        updatePreview();
+    </script>
+</body>
+</html>
