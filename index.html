@@ -163,7 +163,7 @@
             if (prodStickers) {
                 productsHTML += `
                 <div style="margin-bottom: 20px; border-bottom: 1px solid #f0f0f0; padding-bottom: 15px;">
-                    <img src="https://linkfortis.com/img/stickers.jpg" alt="Pegatinas NFC Linkfortis" style="width: 100%; max-height: 220px; object-fit: cover; border-radius: 8px; margin-bottom: 12px;">
+                    <img src="https://linkfortis.com/img/stickers.jpg" alt="Pegatinas NFC Linkfortis" style="width: 100%; max-height: 220px; object-fit: cover; border-radius: 8px; margin-bottom: 12px; display: block;">
                     <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px;">
                         <h4 style="margin: 0; color: #111827; font-size: 16px;">Pegatinas Inteligentes NFC</h4>
                         <span style="font-weight: bold; color: #2563eb; font-size: 16px;">${priceStickers}€</span>
@@ -175,7 +175,7 @@
             if (prodAcrylic) {
                 productsHTML += `
                 <div style="margin-bottom: 20px; border-bottom: 1px solid #f0f0f0; padding-bottom: 15px;">
-                    <img src="https://linkfortis.com/img/tj_review_far.jpeg" alt="Pegatinas con expositores de Acrílico Premium" style="width: 100%; max-height: 220px; object-fit: cover; border-radius: 8px; margin-bottom: 12px;">
+                    <img src="https://linkfortis.com/img/tj_review_far.jpeg" alt="Pegatinas con expositores de Acrílico Premium" style="width: 100%; max-height: 220px; object-fit: cover; border-radius: 8px; margin-bottom: 12px; display: block;">
                     <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px;">
                         <h4 style="margin: 0; color: #111827; font-size: 16px;">Pegatinas con expositores de Acrílico Premium</h4>
                         <span style="font-weight: bold; color: #2563eb; font-size: 16px;">${priceAcrylic}€</span>
@@ -184,10 +184,52 @@
                 </div>`;
             }
 
+            // Sección: Tres pasos, sin fricción (Insertada justo antes de los productos personalizados)
+            if (prodStickers || prodAcrylic || prodCustom) {
+                productsHTML += `
+                <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px 15px; margin-bottom: 20px;">
+                    <div style="margin-bottom: 16px;">
+                        <h3 style="margin: 0 0 4px 0; color: #111827; font-size: 17px; font-weight: bold;">Tres pasos, sin fricción</h3>
+                        <p style="margin: 0; color: #4b5563; font-size: 13px; line-height: 1.4;">Desde que el cliente acerca el móvil hasta que deja la reseña o abre el chat, pasa menos de un segundo.</p>
+                    </div>
+
+                    <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse: collapse; font-family: Arial, sans-serif;">
+                        <tr>
+                            <!-- Paso 01 -->
+                            <td width="33.33%" valign="top" style="padding-right: 8px; vertical-align: top;">
+                                <div style="border-top: 2px solid #2563eb; padding-top: 8px;">
+                                    <span style="display: block; color: #2563eb; font-size: 12px; font-weight: bold; margin-bottom: 3px;">01</span>
+                                    <h4 style="margin: 0 0 4px 0; color: #111827; font-size: 13px; font-weight: bold; line-height: 1.3;">Coloca la tarjeta</h4>
+                                    <p style="margin: 0; color: #6b7280; font-size: 12px; line-height: 1.35;">En el mostrador, la mesa o la recepción — en el punto donde te despides del cliente.</p>
+                                </div>
+                            </td>
+
+                            <!-- Paso 02 -->
+                            <td width="33.33%" valign="top" style="padding: 0 6px; vertical-align: top;">
+                                <div style="border-top: 2px solid #2563eb; padding-top: 8px;">
+                                    <span style="display: block; color: #2563eb; font-size: 12px; font-weight: bold; margin-bottom: 3px;">02</span>
+                                    <h4 style="margin: 0 0 4px 0; color: #111827; font-size: 13px; font-weight: bold; line-height: 1.3;">El cliente acerca el móvil</h4>
+                                    <p style="margin: 0; color: #6b7280; font-size: 12px; line-height: 1.35;">Cualquier smartphone actual, iOS o Android, detecta la tarjeta sin necesidad de abrir ninguna app.</p>
+                                </div>
+                            </td>
+
+                            <!-- Paso 03 -->
+                            <td width="33.33%" valign="top" style="padding-left: 8px; vertical-align: top;">
+                                <div style="border-top: 2px solid #2563eb; padding-top: 8px;">
+                                    <span style="display: block; color: #2563eb; font-size: 12px; font-weight: bold; margin-bottom: 3px;">03</span>
+                                    <h4 style="margin: 0 0 4px 0; color: #111827; font-size: 13px; font-weight: bold; line-height: 1.3;">Se abre automáticamente</h4>
+                                    <p style="margin: 0; color: #6b7280; font-size: 12px; line-height: 1.35;">Tu ficha de Google lista para recibir la reseña, o un WhatsApp ya redactado con tu número.</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>`;
+            }
+
             if (prodCustom) {
                 productsHTML += `
                 <div style="margin-bottom: 20px; border-bottom: 1px solid #f0f0f0; padding-bottom: 15px;">
-                    <img src="https://linkfortis.com/img/personalizados.jpg" alt="Pegatinas y expositores personalizados" style="width: 100%; max-height: 220px; object-fit: cover; border-radius: 8px; margin-bottom: 12px;">
+                    <img src="https://linkfortis.com/img/personalizados.jpg" alt="Pegatinas y expositores personalizados" style="width: 100%; max-height: 220px; object-fit: cover; border-radius: 8px; margin-bottom: 12px; display: block;">
                     <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px;">
                         <h4 style="margin: 0; color: #111827; font-size: 16px;">Pegatinas y expositores personalizados</h4>
                         <span style="font-weight: bold; color: #2563eb; font-size: 16px;">${priceCustom}€</span>
@@ -199,7 +241,7 @@
             if (servReviewShield) {
                 productsHTML += `
                 <div style="margin-bottom: 20px; background-color: #faf5ff; padding: 15px; border-radius: 8px; border-left: 4px solid #9333ea;">
-                    <img src="https://linkfortis.com/img/logo_reviewshield.jpeg" alt="ReviewShield Linkfortis" style="width: 100%; max-height: 220px; object-fit: cover; border-radius: 8px; margin-bottom: 12px;">
+                    <img src="https://linkfortis.com/img/logo_reviewshield.jpeg" alt="ReviewShield Linkfortis" style="width: 100%; max-height: 220px; object-fit: cover; border-radius: 8px; margin-bottom: 12px; display: block;">
                     <h4 style="margin: 0 0 5px 0; color: #6b21a8; font-size: 16px;">Servicio ReviewShield (Escudo de Satisfacción)</h4>
                     <p style="margin: 0 0 8px 0; color: #4b5563; font-size: 14px; line-height: 1.4;">Protege la reputación online de ${businessName}. Este sistema actúa como un escudo previo: capta internamente las opiniones negativas para que puedas gestionarlas en privado, mientras dirige directamente a Google las reseñas positivas.</p>
                     <p style="margin: 0; font-size: 13px; font-weight: bold; color: #7e22ce;">Prueba gratuita incluida: ${trialReviewShield}</p>
