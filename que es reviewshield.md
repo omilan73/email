@@ -1,0 +1,3 @@
+ReviewShield es un sistema que sirve como escudo para frenar los clientes insatisfechos.
+Es la bifurcación estratégica perfecta ya que el cliente tiene la opción de ir a calificarnos en Google como la opción de un canal privado para hacer llegar cualquier inconveniente a la gerencia, funciona como un muro de contención ante cualquier cliente insatisfecho para transformarlo en una oportunidad de fidelización.
+La finalidad de éste sistema es la protección de marca desactivando el impulso psicológico de frustración y venganza y evitar que lo plasme en una reseña pública.
